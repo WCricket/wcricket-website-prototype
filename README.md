@@ -1,1 +1,1 @@
-# wcricket-website-prototype.
+# wcricket-website-prototype
