@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Wcricket V6 – Play your innings. One ball at a time.</title>
+  <meta name="description" content="A different kind of cricket game where word-game skill, cricket decisions and chance combine to create a continuing innings, memorable moments and short shareable highlights.">
+  <meta name="theme-color" content="#153a2b">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Wcricket – Play your innings. One ball at a time.">
+  <meta property="og:description" content="Build a continuing cricket innings from your daily word-puzzle result, then relive and share the moments that matter.">
+  <meta property="og:image" content="../assets/images/01_hero_high_catch_illustrated.png">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/main.js" defer></script>
+  <style>
+    .story-card-6{background:linear-gradient(180deg,#fbfbf5,#eef3e8)}
+    .reel-preview{position:relative;width:min(470px,100%);justify-self:center;overflow:hidden;border-radius:28px;box-shadow:var(--shadow);background:var(--ink)}
+    .reel-preview img{width:100%;aspect-ratio:9/14;object-fit:cover;opacity:.9}
+    .reel-preview::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(10,35,25,.75))}
+    .reel-play{position:absolute;left:50%;top:50%;z-index:2;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:76px;height:76px;border-radius:50%;background:rgba(255,253,248,.94);color:var(--ink);font-size:27px;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+    .reel-caption{position:absolute;left:24px;right:24px;bottom:22px;z-index:2;color:white}
+    .reel-caption span{display:block;text-transform:uppercase;letter-spacing:.18em;font-size:9px;font-weight:800;opacity:.8;margin-bottom:5px}
+    .reel-caption strong{font-family:var(--serif);font-size:24px;line-height:1.08;font-weight:600}
+    .share-points{display:flex;flex-wrap:wrap;gap:9px;margin:25px 0 0;padding:0;list-style:none}
+    .share-points li{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.7);font-size:12px;font-weight:700;color:#506157}
+    .share-callout{margin-top:26px;padding:18px 20px;border-left:3px solid var(--ink);background:rgba(231,236,223,.55);border-radius:0 12px 12px 0;color:#44554c}
+    .share-callout strong{display:block;font-family:var(--serif);font-size:22px;color:var(--ink);margin-bottom:5px}
+    @media(max-width:850px){.reel-preview{width:min(390px,92vw)}.share-points{justify-content:center}.share-callout{text-align:left}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="shell nav-wrap">
+      <a class="brand" href="#top" aria-label="Wcricket home">Wcricket</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="sr-only">Open menu</span>
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation" data-nav>
+        <a href="#experience">About</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#character">On This Day</a>
+        <a href="../support.html">Support</a>
+        <a class="button button-small button-dark" href="#download">Coming soon on the App Store</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-art" aria-hidden="true">
+        <img src="../assets/images/01_hero_high_catch_illustrated.png" alt="" width="1448" height="1086">
+      </div>
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">A different kind of cricket game</p>
+          <h1>Play your innings.<br>One ball at a time.</h1>
+          <p class="lede">A different kind of cricket game where word-game skill, cricket decisions and chance combine to create an innings that develops day by day — and moments worth sharing.</p>
+          <a class="button button-dark" href="#download">Coming soon on the App Store</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-accordion" id="experience">
+      <div class="shell">
+        <div class="accordion-intro reveal">
+          <p class="eyebrow">How Wcricket works</p>
+          <h2>Start with a word puzzle. Build a cricket innings.</h2>
+          <p>Each day begins with the result from your daily word challenge. Wcricket turns that result into the next passage of a continuing cricket innings — with cricket rules, decisions and chance shaping what happens next.</p>
+        </div>
+
+        <div class="story-stack reveal" data-story-stack>
+          <article class="story-card story-card-1 is-open" id="card-gameplay">
+            <button class="story-trigger" id="trigger-gameplay" type="button" aria-expanded="true" aria-controls="panel-gameplay">
+              <span class="story-index">01</span>
+              <span class="story-trigger-copy"><span class="eyebrow">Start here</span><span class="story-title">Your daily word-puzzle result becomes cricket</span></span>
+              <span class="story-hint">Open</span>
+            </button>
+            <div class="story-panel" id="panel-gameplay" role="region" aria-labelledby="trigger-gameplay">
+              <div class="story-panel-inner"><div class="story-panel-grid">
+                <div class="device-frame story-device"><img src="../assets/images/02_gameplay_word_result_commentary.png" alt="Wcricket gameplay screen showing a word result, cricket commentary and match imagery" width="941" height="2048" loading="lazy"></div>
+                <div class="copy-block word-explainer">
+                  <p class="eyebrow">The idea in one move</p><h3>Your word result becomes the next passage of your innings</h3>
+                  <p>Finish your daily word challenge and enter how many attempts it took. Wcricket uses that result, together with cricket rules, decisions and chance, to create what happens next on the field.</p>
+                  <div class="aha-flow" aria-label="Example of a word-puzzle result becoming part of a cricket innings">
+                    <div class="aha-step"><span class="aha-label">Your result</span><strong>3 attempts</strong></div><span class="aha-arrow" aria-hidden="true">→</span>
+                    <div class="aha-step"><span class="aha-label">Wcricket</span><strong>cricket event</strong></div><span class="aha-arrow" aria-hidden="true">→</span>
+                    <div class="aha-step"><span class="aha-label">Your innings</span><strong>score + story move on</strong></div>
+                  </div>
+                  <p class="micro-note">Illustrative flow: the word result is an input to Wcricket, not a fixed one-to-one conversion into a particular cricket outcome.</p>
+                </div>
+              </div></div>
+            </div>
+          </article>
+
+          <article class="story-card story-card-2" id="card-scorecard">
+            <button class="story-trigger" id="trigger-scorecard" type="button" aria-expanded="false" aria-controls="panel-scorecard">
+              <span class="story-index">02</span><span class="story-trigger-copy"><span class="eyebrow">Your scorecard</span><span class="story-title">Build an innings</span></span><span class="story-hint">Open</span>
+            </button>
+            <div class="story-panel" id="panel-scorecard" role="region" aria-labelledby="trigger-scorecard"><div class="story-panel-inner"><div class="story-panel-grid story-panel-grid-reverse">
+              <div class="device-frame story-device"><img src="../assets/images/03_scorecard.png" alt="Wcricket scorecard showing batting and bowling figures from a developing innings" width="941" height="2048" loading="lazy"></div>
+              <div class="copy-block"><p class="eyebrow">Your scorecard</p><h3>Build an innings</h3><p>Scores, wickets, partnerships and bowling figures accumulate over time. The scorecard records the innings you have created.</p></div>
+            </div></div></div>
+          </article>
+
+          <article class="story-card story-card-3" id="card-drs">
+            <button class="story-trigger" id="trigger-drs" type="button" aria-expanded="false" aria-controls="panel-drs">
+              <span class="story-index">03</span><span class="story-trigger-copy"><span class="eyebrow">Unpredictable moments</span><span class="story-title">Cricket has drama</span></span><span class="story-hint">Open</span>
+            </button>
+            <div class="story-panel" id="panel-drs" role="region" aria-labelledby="trigger-drs"><div class="story-panel-inner"><div class="story-panel-grid">
+              <div class="device-frame story-device"><img src="../assets/images/04_drs_not_out.png" alt="Wcricket DRS review screen showing a not out decision" width="941" height="2048" loading="lazy"></div>
+              <div class="copy-block"><p class="eyebrow">Unpredictable moments</p><h3>Cricket has drama</h3><p>Reviews, wickets and changing match situations give the innings its tension. Decisions and chance keep the story moving.</p></div>
+            </div></div></div>
+          </article>
+
+          <article class="story-card story-card-4" id="story">
+            <button class="story-trigger" id="trigger-story" type="button" aria-expanded="false" aria-controls="panel-story">
+              <span class="story-index">04</span><span class="story-trigger-copy"><span class="eyebrow">Memorable moments</span><span class="story-title">Every innings has a story</span></span><span class="story-hint">Open</span>
+            </button>
+            <div class="story-panel" id="panel-story" role="region" aria-labelledby="trigger-story"><div class="story-panel-inner"><div class="story-panel-grid story-panel-grid-reverse">
+              <div class="story-image story-device"><img src="../assets/images/07_partnership_100_milestone.png" alt="Wcricket screen celebrating a 100-run partnership milestone between Duckett and Gay" width="941" height="2048" loading="lazy"></div>
+              <div class="copy-block"><p class="eyebrow">Memorable moments</p><h3>Every innings has a story</h3><p>Partnerships, milestones and turning points create an unfolding narrative. Wcricket records the moments that turn a score into an innings.</p><div class="share-callout"><strong>Built to share the good bits.</strong>Milestones, reviews, scorecards and turning points can become moments you pass on, not just results you file away.</div></div>
+            </div></div></div>
+          </article>
+
+          <article class="story-card story-card-5" id="highlights">
+            <button class="story-trigger" id="trigger-highlights" type="button" aria-expanded="false" aria-controls="panel-highlights">
+              <span class="story-index">05</span><span class="story-trigger-copy"><span class="eyebrow">Highlights & sharing</span><span class="story-title">Relive the innings</span></span><span class="story-hint">Open</span>
+            </button>
+            <div class="story-panel" id="panel-highlights" role="region" aria-labelledby="trigger-highlights"><div class="story-panel-inner"><div class="story-panel-grid">
+              <div class="reel-preview story-device" aria-label="Preview image for a short Wcricket highlight reel">
+                <img src="../assets/media/reel_v2_poster_SOURCE.jpg" alt="Wcricket highlight reel preview" loading="lazy">
+                <span class="reel-play" aria-hidden="true">▶</span>
+                <div class="reel-caption"><span>Short highlight reel</span><strong>Your innings, cut to the moments that mattered</strong></div>
+              </div>
+              <div class="copy-block">
+                <p class="eyebrow">Highlights & sharing</p><h3>Relive the innings</h3>
+                <p>Wcricket can turn the key moments of your innings into a short highlight reel — wickets, reviews, milestones and score movement — ready to revisit or share.</p>
+                <ul class="share-points" aria-label="Examples of shareable Wcricket moments"><li>Milestones</li><li>DRS calls</li><li>Scorecards</li><li>Turning points</li><li>Highlight reels</li></ul>
+                <p class="micro-note">Prototype treatment: the launch version would use a teaser-length reel rather than the longer proof-of-concept edit.</p>
+              </div>
+            </div></div></div>
+          </article>
+
+          <article class="story-card story-card-6" id="character">
+            <button class="story-trigger" id="trigger-character" type="button" aria-expanded="false" aria-controls="panel-character">
+              <span class="story-index">06</span><span class="story-trigger-copy"><span class="eyebrow">On This Day</span><span class="story-title">Cricket with character</span></span><span class="story-hint">Open</span>
+            </button>
+            <div class="story-panel" id="panel-character" role="region" aria-labelledby="trigger-character"><div class="story-panel-inner"><div class="story-panel-grid">
+              <div class="character-card story-device"><img src="../assets/images/06_on_this_day.png" alt="Wcricket On This Day screen celebrating a story from cricket history" width="941" height="2048" loading="lazy"></div>
+              <div class="copy-block"><p class="eyebrow">On This Day</p><h3>Cricket with character</h3><p>Wcricket also celebrates the game beyond the current innings, with stories and moments from cricket's past.</p></div>
+            </div></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="download">
+      <div class="final-cta-art" aria-hidden="true"><img src="../assets/images/01_hero_high_catch_illustrated.png" alt="" width="1448" height="1086" loading="lazy"></div>
+      <div class="shell final-cta-inner reveal"><p class="eyebrow eyebrow-light">Your next innings</p><h2>Ready to start your innings?</h2><p>Play it today. Build the story. Share the moments.</p><span class="button button-light" aria-disabled="true">Coming soon on the App Store</span></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-grid"><a class="brand" href="#top">Wcricket</a><nav aria-label="Footer navigation"><a href="../support.html">Support</a><a href="../privacy.html">Privacy</a></nav><p>© <span data-year></span> Wcricket</p></div></footer>
+</body>
+</html>
