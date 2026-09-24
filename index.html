@@ -25,6 +25,7 @@
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Main navigation" data-nav>
         <a href="#experience">About</a>
+        <a href="#reel">Highlights</a>
         <a href="#character">On This Day</a>
         <a href="support.html">Support</a>
         <a class="button button-small button-dark" href="#download">Coming soon on the App Store</a>
@@ -41,7 +42,7 @@
         <div class="hero-copy reveal">
           <p class="eyebrow">A different kind of cricket game</p>
           <h1>Play your innings.<br>One ball at a time.</h1>
-          <p class="lede">A different kind of cricket game where word-game skill, cricket decisions and chance combine to create an innings that develops day by day.</p>
+          <p class="lede">A different kind of cricket game where word-game skill, cricket decisions and chance combine to create an innings that develops day by day — and creates moments worth sharing.</p>
           <a class="button button-dark" href="#download">Coming soon on the App Store</a>
         </div>
       </div>
@@ -168,16 +169,57 @@
                     <p class="eyebrow">Memorable moments</p>
                     <h3>Every innings has a story</h3>
                     <p>Partnerships, milestones and turning points create an unfolding narrative. Wcricket records the moments that turn a score into an innings.</p>
-                    <p class="micro-note">The launch website uses the static milestone treatment while the short highlight reel is finalised.</p>
+                    <p class="micro-note">Wcricket is designed to create moments that are satisfying both to revisit and to share.</p>
                   </div>
                 </div>
               </div>
             </div>
           </article>
 
-          <article class="story-card story-card-5" id="character">
-            <button class="story-trigger" id="trigger-character" type="button" aria-expanded="false" aria-controls="panel-character">
+          <article class="story-card story-card-5" id="reel">
+            <button class="story-trigger" id="trigger-reel" type="button" aria-expanded="false" aria-controls="panel-reel">
               <span class="story-index">05</span>
+              <span class="story-trigger-copy">
+                <span class="eyebrow">Highlights &amp; sharing</span>
+                <span class="story-title">Relive the innings</span>
+              </span>
+              <span class="story-hint">Open</span>
+            </button>
+            <div class="story-panel" id="panel-reel" role="region" aria-labelledby="trigger-reel">
+              <div class="story-panel-inner">
+                <div class="story-panel-grid reel-grid">
+                  <div class="reel-preview">
+                    <figure class="reel-figure">
+                      <img src="assets/images/09_reel_card_reference.png" alt="Wcricket highlight ribbon reel card showing match state, lozenges and passage analysis" loading="lazy">
+                      <button class="reel-play" type="button" data-open-video aria-label="Play work in progress Wcricket reel">
+                        <span class="reel-play-icon" aria-hidden="true">▶</span>
+                        <span>Play reel</span>
+                      </button>
+                    </figure>
+                    <div class="reel-meta">
+                      <span class="reel-badge">Work in progress</span>
+                      <span class="reel-badge">Vertical reel</span>
+                      <span class="reel-badge">1:25</span>
+                    </div>
+                  </div>
+                  <div class="copy-block reel-copy">
+                    <p class="eyebrow">Built to share the good bits</p>
+                    <h3>Your innings, cut to the moments that mattered</h3>
+                    <p>Wickets, reviews, partnerships, milestones and shifts in the match state can be gathered into a short highlight reel — ready to watch back, keep or share.</p>
+                    <p>This panel now uses the real reel-card design language, including the elegant highlight lozenges and match-state analysis. The play control opens the current work-in-progress reel.</p>
+                    <div class="reel-actions">
+                      <button class="button button-dark" type="button" data-open-video>Watch the WIP reel</button>
+                    </div>
+                    <p class="micro-note">For launch, the website would probably use a shorter teaser edit, but this prototype now plays the actual work-in-progress reel rather than a mockup.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="story-card story-card-6" id="character">
+            <button class="story-trigger" id="trigger-character" type="button" aria-expanded="false" aria-controls="panel-character">
+              <span class="story-index">06</span>
               <span class="story-trigger-copy">
                 <span class="eyebrow">On This Day</span>
                 <span class="story-title">Cricket with character</span>
@@ -210,11 +252,23 @@
       <div class="shell final-cta-inner reveal">
         <p class="eyebrow eyebrow-light">Your next innings</p>
         <h2>Ready to start your innings?</h2>
-        <p>One move today. Another chapter tomorrow.</p>
+        <p>Play it today. Build the story. Share the moments.</p>
         <span class="button button-light" aria-disabled="true">Coming soon on the App Store</span>
       </div>
     </section>
   </main>
+
+  <div class="video-modal" data-video-modal hidden>
+    <div class="video-modal-backdrop" data-close-video></div>
+    <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+      <button class="video-close" type="button" data-close-video aria-label="Close video">×</button>
+      <h2 id="video-modal-title" class="video-modal-title">Wcricket highlight reel — work in progress</h2>
+      <video controls playsinline preload="metadata" class="video-player" data-video-player poster="assets/images/09_reel_card_reference.png">
+        <source src="assets/media/reel_wip.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="shell footer-grid">

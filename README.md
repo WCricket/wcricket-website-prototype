@@ -53,3 +53,9 @@ The current HTML uses `.html` filenames. On most static hosts, configure clean r
 - The page describes a daily word challenge / word-puzzle result as the input to Wcricket.
 - A compact visual flow shows: result → Wcricket cricket event → continuing innings.
 - Copy explicitly notes that cricket rules, decisions and chance shape the outcome, avoiding the impression of a fixed one-to-one conversion.
+
+
+## V8 reel update
+- Added a dedicated reel/highlights accordion sheet using a real reel-card screenshot.
+- Added a functional HTML5 video modal wired to the uploaded work-in-progress reel.
+- On This Day now sits as sheet 6 after the reel panel.

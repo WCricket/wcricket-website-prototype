@@ -12,7 +12,9 @@
     }));
   }
 
-  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
+  document.querySelectorAll('[data-year]').forEach(el => {
+    el.textContent = new Date().getFullYear();
+  });
 
   const header = document.querySelector('[data-header]');
   if (header && !header.classList.contains('solid')) {
@@ -49,16 +51,12 @@
         if (trigger) trigger.setAttribute('aria-expanded', String(open));
       });
 
-      // Accordion panels change the document height while one panel closes
-      // and the next opens. Wait for that movement to finish, then align the
-      // active sheet immediately beneath the fixed navigation bar.
       window.setTimeout(() => {
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 500);
     };
 
     let hoverTimer = null;
-
     const cancelHoverOpen = () => {
       if (hoverTimer) {
         window.clearTimeout(hoverTimer);
@@ -78,13 +76,11 @@
         cancelHoverOpen();
         openCard(card);
       });
-
       trigger.addEventListener('mouseenter', () => {
         if (!finePointer.matches || card.classList.contains('is-open')) return;
         cancelHoverOpen();
         hoverTimer = window.setTimeout(() => openCard(card), 650);
       });
-
       trigger.addEventListener('mouseleave', cancelHoverOpen);
     });
 
@@ -92,4 +88,29 @@
       openCard(cards[0]);
     }
   }
+
+  const modal = document.querySelector('[data-video-modal]');
+  const player = document.querySelector('[data-video-player]');
+  const openVideoButtons = document.querySelectorAll('[data-open-video]');
+  const closeVideoButtons = document.querySelectorAll('[data-close-video]');
+
+  const openVideo = () => {
+    if (!modal || !player) return;
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+    player.play().catch(() => {});
+  };
+
+  const closeVideo = () => {
+    if (!modal || !player) return;
+    player.pause();
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+  };
+
+  openVideoButtons.forEach(btn => btn.addEventListener('click', openVideo));
+  closeVideoButtons.forEach(btn => btn.addEventListener('click', closeVideo));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal && !modal.hidden) closeVideo();
+  });
 })();
