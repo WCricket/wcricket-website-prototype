@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Wcricket V7 – Reel card prototype</title>
+  <meta name="theme-color" content="#153a2b">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .story-card-6{background:linear-gradient(180deg,#fbfbf5,#eef3e8)}
+    .share-callout{margin-top:26px;padding:18px 20px;border-left:3px solid var(--ink);background:rgba(231,236,223,.55);border-radius:0 12px 12px 0;color:#44554c}
+    .share-callout strong{display:block;font-family:var(--serif);font-size:22px;color:var(--ink);margin-bottom:5px}
+    .reel-card{width:min(470px,100%);justify-self:center;border-radius:28px;overflow:hidden;background:#102d22;color:white;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.08)}
+    .reel-card-visual{position:relative;aspect-ratio:16/10;overflow:hidden;background:#081d15}
+    .reel-card-visual img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.88) contrast(1.02)}
+    .reel-card-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,20,14,.08),rgba(5,20,14,.22) 55%,rgba(5,20,14,.78))}
+    .reel-kicker{position:absolute;left:20px;top:18px;padding:7px 10px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(9,39,27,.55);backdrop-filter:blur(8px);font-size:9px;font-weight:800;letter-spacing:.18em}
+    .reel-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:rgba(255,253,248,.95);color:var(--ink);font-size:23px;box-shadow:0 12px 30px rgba(0,0,0,.22)}
+    .reel-card-body{padding:22px 22px 24px}
+    .reel-state-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+    .reel-state-head>div{display:flex;flex-direction:column;gap:3px}
+    .reel-label{font-size:9px;letter-spacing:.18em;font-weight:800;color:rgba(255,255,255,.62)}
+    .reel-state-head strong{font-family:var(--serif);font-size:28px;line-height:1.05;font-weight:600;color:white}
+    .reel-duration{font-size:9px;letter-spacing:.14em;font-weight:800;color:#dce9df;padding-top:5px}
+    .reel-analysis{margin:15px 0 18px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.8)}
+    .reel-lozenges{display:flex;flex-wrap:wrap;gap:8px}
+    .reel-lozenges span{padding:7px 10px;border-radius:999px;border:1px solid rgba(232,243,234,.32);background:rgba(232,243,234,.1);color:#eef6ef;font-size:10px;font-weight:750;letter-spacing:.03em}
+    .loading{min-height:100vh;display:grid;place-items:center;background:#fffdf8;color:#153a2b;font-family:Georgia,serif}
+    @media(max-width:850px){.reel-card{width:min(390px,92vw)}.share-callout{text-align:left}.reel-state-head strong{font-size:25px}}
+  </style>
+</head>
+<body><div class="loading">Loading Wcricket V7…</div>
+<script>
+(async()=>{
+  const r=await fetch('../v6/index.html');
+  const t=await r.text();
+  const d=new DOMParser().parseFromString(t,'text/html');
+  d.querySelectorAll('script').forEach(s=>s.remove());
+  const card=d.querySelector('#highlights');
+  if(card){
+    card.innerHTML=`
+      <button class="story-trigger" id="trigger-highlights" type="button" aria-expanded="false" aria-controls="panel-highlights">
+        <span class="story-index">05</span><span class="story-trigger-copy"><span class="eyebrow">Highlights & sharing</span><span class="story-title">Relive the innings</span></span><span class="story-hint">Open</span>
+      </button>
+      <div class="story-panel" id="panel-highlights" role="region" aria-labelledby="trigger-highlights"><div class="story-panel-inner"><div class="story-panel-grid">
+        <div class="reel-card story-device" aria-label="Illustrative Wcricket innings reel card">
+          <div class="reel-card-visual">
+            <img src="../assets/media/reel_v2_poster_SOURCE.jpg" alt="Contact-sheet preview of a Wcricket innings highlight reel" loading="lazy">
+            <div class="reel-card-shade"></div><span class="reel-kicker">INNINGS REEL</span><span class="reel-play" aria-hidden="true">▶</span>
+          </div>
+          <div class="reel-card-body">
+            <div class="reel-state-head"><div><span class="reel-label">MATCH STATE</span><strong>162/3 → 219/7</strong></div><span class="reel-duration">TEASER 0:20</span></div>
+            <p class="reel-analysis">A century anchors the innings before a run of late wickets changes the shape of the game.</p>
+            <div class="reel-lozenges" aria-label="Highlight markers"><span>Century</span><span>Partnership</span><span>Turning point</span><span>Late wickets</span></div>
+          </div>
+        </div>
+        <div class="copy-block">
+          <p class="eyebrow">Highlights & sharing</p><h3>Your innings, cut to the moments that mattered</h3>
+          <p>Wcricket can gather the key passages of your innings into a short highlight reel — with match-state analysis and elegant markers for the moments worth remembering.</p>
+          <div class="share-callout"><strong>Watch it. Keep it. Share it.</strong>A teaser-length reel can turn a day-by-day innings into something immediately understandable and easy to pass on.</div>
+          <p class="micro-note">Prototype treatment: this card represents the intended reel language. The launch clip would be a polished 15–25 second edit rather than the longer proof-of-concept reel.</p>
+        </div>
+      </div></div></div>`;
+  }
+  document.body.innerHTML=d.body.innerHTML;
+  document.title='Wcricket V7 – Reel card prototype';
+  const s=document.createElement('script');s.src='../js/main.js';document.body.appendChild(s);
+})().catch(()=>{document.body.innerHTML='<div class="loading">Unable to load prototype.</div>'});
+</script>
+</body>
+</html>
