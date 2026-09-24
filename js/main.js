@@ -36,6 +36,54 @@
     revealEls.forEach(el => el.classList.add('in-view'));
   }
 
+  // Team and era selection: restore the compact feature sheet between the
+  // scorecard and drama sections. The existing optional screenshot is already
+  // part of the governed website asset set.
+  const scorecardCard = document.querySelector('#card-scorecard');
+  if (scorecardCard && !document.querySelector('#teams')) {
+    const teamCard = document.createElement('article');
+    teamCard.className = 'story-card story-card-3';
+    teamCard.id = 'teams';
+    teamCard.innerHTML = `
+      <button class="story-trigger" id="trigger-teams" type="button" aria-expanded="false" aria-controls="panel-teams">
+        <span class="story-index">03</span>
+        <span class="story-trigger-copy">
+          <span class="eyebrow">Choose your cricket</span>
+          <span class="story-title">Play across teams and eras</span>
+        </span>
+        <span class="story-hint">Open</span>
+      </button>
+      <div class="story-panel" id="panel-teams" role="region" aria-labelledby="trigger-teams">
+        <div class="story-panel-inner">
+          <div class="story-panel-grid">
+            <div class="device-frame story-device">
+              <img src="assets/images/07_team_selection_OPTIONAL.png" alt="Wcricket team selection screen showing choices of cricket teams and eras" loading="lazy">
+            </div>
+            <div class="copy-block">
+              <p class="eyebrow">Teams &amp; eras</p>
+              <h3>Choose your cricket</h3>
+              <p>Play with men's or women's teams, choose from Test-playing nations, and select from current or historic player eras.</p>
+              <div class="body-lozenge-group" aria-label="Team selection options">
+                <span class="highlight-lozenge">Men's &amp; women's teams</span>
+                <span class="highlight-lozenge">Test-playing nations</span>
+                <span class="highlight-lozenge">Current &amp; historic eras</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    scorecardCard.insertAdjacentElement('afterend', teamCard);
+
+    const renumber = (selector, value) => {
+      const index = document.querySelector(`${selector} .story-index`);
+      if (index) index.textContent = value;
+    };
+    renumber('#card-drs', '04');
+    renumber('#story', '05');
+    renumber('#reel', '06');
+    renumber('#character', '07');
+  }
+
   const teaserVideo = document.querySelector('.teaser-video');
   const resetTeaser = () => {
     if (!teaserVideo) return;
