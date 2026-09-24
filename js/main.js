@@ -36,12 +36,32 @@
     revealEls.forEach(el => el.classList.add('in-view'));
   }
 
+  const teaserVideo = document.querySelector('.teaser-video');
+  const resetTeaser = () => {
+    if (!teaserVideo) return;
+    teaserVideo.pause();
+    try {
+      teaserVideo.currentTime = 0;
+    } catch (_) {
+      // Ignore browsers that momentarily reject seeking before metadata is ready.
+    }
+  };
+
+  if (teaserVideo) {
+    teaserVideo.addEventListener('blur', resetTeaser);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) resetTeaser();
+    });
+  }
+
   const stack = document.querySelector('[data-story-stack]');
   if (stack) {
     const cards = [...stack.querySelectorAll('.story-card')];
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
     const openCard = (targetCard) => {
+      if (targetCard.id !== 'reel') resetTeaser();
+
       cards.forEach(card => {
         const open = card === targetCard;
         card.classList.toggle('is-open', open);
