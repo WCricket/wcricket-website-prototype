@@ -40,15 +40,21 @@
   const resetTeaser = () => {
     if (!teaserVideo) return;
     teaserVideo.pause();
+
+    // Reloading the media element reliably restores its poster/first-frame
+    // presentation on iOS Safari. A currentTime = 0 seek alone can remain
+    // visually stuck on the last rendered frame while the page is hidden.
     try {
       teaserVideo.currentTime = 0;
     } catch (_) {
       // Ignore browsers that momentarily reject seeking before metadata is ready.
     }
+    teaserVideo.load();
   };
 
   if (teaserVideo) {
-    teaserVideo.addEventListener('blur', resetTeaser);
+    window.addEventListener('blur', resetTeaser);
+    window.addEventListener('pagehide', resetTeaser);
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) resetTeaser();
     });
