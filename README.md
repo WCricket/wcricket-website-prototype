@@ -67,3 +67,9 @@ The current HTML uses `.html` filenames. On most static hosts, configure clean r
 - Audio cuts rebuilt around detected silence boundaries with short fades to avoid clipped words/clicks.
 - Retains a compact Highlight Ribbon reference so the lozenge/match-state design remains visible.
 - Current source reel does not contain the requested Olivia innings-closure screen; ending remains on the last clean pre-closure highlight available in the supplied source.
+
+
+## V11 mobile reel refinement
+- Replaced modal playback with a direct inline HTML5 video element for stronger iPhone/Safari reliability.
+- Enlarged the Highlight Ribbon reference, especially on mobile.
+- Added reel-style highlight lozenges to the website body content.

@@ -92,27 +92,4 @@
       openCard(cards[0]);
     }
   }
-
-
-  const modal = document.querySelector('[data-video-modal]');
-  const player = document.querySelector('[data-video-player]');
-  const openButtons = document.querySelectorAll('[data-open-video]');
-  const closeButtons = document.querySelectorAll('[data-close-video]');
-  const openVideo = () => {
-    if (!modal || !player) return;
-    modal.hidden = false;
-    document.body.classList.add('modal-open');
-    player.play().catch(() => {});
-  };
-  const closeVideo = () => {
-    if (!modal || !player) return;
-    player.pause();
-    modal.hidden = true;
-    document.body.classList.remove('modal-open');
-  };
-  openButtons.forEach(btn => btn.addEventListener('click', openVideo));
-  closeButtons.forEach(btn => btn.addEventListener('click', closeVideo));
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && modal && !modal.hidden) closeVideo();
-  });
 })();
