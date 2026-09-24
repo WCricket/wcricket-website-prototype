@@ -59,3 +59,11 @@ The current HTML uses `.html` filenames. On most static hosts, configure clean r
 - The player no longer overlays the card itself.
 - A 24.5-second functional teaser begins with the opening title frame for context.
 - The known rogue final Archer comment is excluded from the teaser.
+
+
+## V10 teaser refinements
+- Opening title frame is visible before playback with an explicit play icon.
+- Opening title frame held for 1.2 seconds.
+- Audio cuts rebuilt around detected silence boundaries with short fades to avoid clipped words/clicks.
+- Retains a compact Highlight Ribbon reference so the lozenge/match-state design remains visible.
+- Current source reel does not contain the requested Olivia innings-closure screen; ending remains on the last clean pre-closure highlight available in the supplied source.

@@ -206,3 +206,16 @@ h3{font-size:clamp(34px,4vw,52px);max-width:580px}
 body.modal-open{overflow:hidden}
 @media (max-width:850px){.reel-preview{align-items:center}.reel-copy{text-align:center}.reel-actions{display:flex;justify-content:center}}
 @media (max-width:520px){.video-modal{padding:14px}.video-modal-dialog{padding:16px;border-radius:22px}.video-modal-title{font-size:16px;margin-right:34px}}
+
+
+/* V10: teaser poster first, with explicit play affordance */
+.teaser-poster{position:relative;margin:0;border-radius:28px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.22);background:#0c1420}
+.teaser-poster img{display:block;width:min(380px,100%);height:auto}
+.teaser-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border:0;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.94);color:#153a2b;box-shadow:0 12px 32px rgba(0,0,0,.28);cursor:pointer;transition:transform .18s ease,background .18s ease}
+.teaser-play:hover{transform:translate(-50%,-50%) scale(1.04);background:#fff}
+.teaser-play-icon{font-size:27px;line-height:1;margin-left:4px}
+.ribbon-reference{margin:2px 0 0;display:grid;grid-template-columns:92px 1fr;align-items:center;gap:14px;padding:12px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.55)}
+.ribbon-reference img{width:92px;border-radius:12px;display:block}
+.ribbon-reference figcaption{font-size:13px;font-weight:700;color:#4e5d55}
+@media(max-width:850px){.ribbon-reference{width:min(380px,100%);margin-inline:auto;text-align:left}}
+@media(max-width:520px){.teaser-play{width:66px;height:66px}.teaser-play-icon{font-size:23px}}
