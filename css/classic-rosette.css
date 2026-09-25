@@ -1,0 +1,19 @@
+/* Classic Highlight Ribbon rosette treatment.
+   Uses the reusable SVG asset as a mask so the emblem inherits each lozenge's colour. */
+.lozenge-medal{
+  position:relative;
+  display:inline-block;
+  width:18px;
+  height:20px;
+  flex:0 0 18px;
+  border:0;
+  border-radius:0;
+  background:currentColor;
+  -webkit-mask:url('../assets/images/classic-rosette.svg') center / contain no-repeat;
+  mask:url('../assets/images/classic-rosette.svg') center / contain no-repeat;
+}
+.lozenge-medal::before,
+.lozenge-medal::after{
+  content:none;
+  display:none;
+}
