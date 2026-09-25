@@ -1,0 +1,18 @@
+---
+interface Props {
+  currentPage?: 'support' | 'privacy';
+}
+
+const { currentPage } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <a class="brand" href="/">Wcricket</a>
+    <nav aria-label="Footer navigation">
+      <a href="/support.html" aria-current={currentPage === 'support' ? 'page' : undefined}>Support</a>
+      <a href="/privacy.html" aria-current={currentPage === 'privacy' ? 'page' : undefined}>Privacy</a>
+    </nav>
+    <p>© {year} Wcricket</p>
+  </div>
+</footer>
