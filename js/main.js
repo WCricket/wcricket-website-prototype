@@ -1,4 +1,9 @@
 (() => {
+  const rosetteStyles = document.createElement('link');
+  rosetteStyles.rel = 'stylesheet';
+  rosetteStyles.href = 'css/classic-rosette.css?v=1';
+  document.head.appendChild(rosetteStyles);
+
   const navToggle = document.querySelector('[data-nav-toggle]');
   const nav = document.querySelector('[data-nav]');
   if (navToggle && nav) {
