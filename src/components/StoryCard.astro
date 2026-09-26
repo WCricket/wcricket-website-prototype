@@ -1,0 +1,43 @@
+---
+interface Props {
+  id: string;
+  number: string;
+  eyebrow: string;
+  title: string;
+  open?: boolean;
+  variant?: number;
+}
+
+const {
+  id,
+  number,
+  eyebrow,
+  title,
+  open = false,
+  variant = 1
+} = Astro.props;
+
+const triggerId = `trigger-${id}`;
+const panelId = `panel-${id}`;
+---
+<article class:list={["story-card", `story-card-${variant}`, open && "is-open"]} id={id}>
+  <button
+    class="story-trigger"
+    id={triggerId}
+    type="button"
+    aria-expanded={open ? 'true' : 'false'}
+    aria-controls={panelId}
+  >
+    <span class="story-index">{number}</span>
+    <span class="story-trigger-copy">
+      <span class="eyebrow">{eyebrow}</span>
+      <span class="story-title">{title}</span>
+    </span>
+    <span class="story-hint">Open</span>
+  </button>
+  <div class="story-panel" id={panelId} role="region" aria-labelledby={triggerId}>
+    <div class="story-panel-inner">
+      <slot />
+    </div>
+  </div>
+</article>

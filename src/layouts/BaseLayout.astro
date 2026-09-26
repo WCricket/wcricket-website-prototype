@@ -1,0 +1,153 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  solidHeader?: boolean;
+  currentPage?: 'support' | 'privacy';
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description,
+  solidHeader = false,
+  currentPage,
+  bodyClass = ''
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#153a2b" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/01_hero_high_catch_illustrated.png" />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader solid={solidHeader} currentPage={currentPage} />
+    <slot />
+    <SiteFooter currentPage={currentPage} />
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const navToggle = document.querySelector('[data-nav-toggle]');
+        const nav = document.querySelector('[data-nav]');
+        if (navToggle && nav) {
+          navToggle.addEventListener('click', () => {
+            const open = nav.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', String(open));
+          });
+          nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+            nav.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          }));
+        }
+
+        const header = document.querySelector('[data-header]');
+        if (header && !header.classList.contains('solid')) {
+          const updateHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+          updateHeader();
+          window.addEventListener('scroll', updateHeader, { passive: true });
+        }
+
+        const revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.12 });
+          revealEls.forEach((el) => observer.observe(el));
+        } else {
+          revealEls.forEach((el) => el.classList.add('in-view'));
+        }
+
+        const teaserVideo = document.querySelector('.teaser-video');
+        const resetTeaser = () => {
+          if (!(teaserVideo instanceof HTMLVideoElement)) return;
+          teaserVideo.pause();
+          try {
+            teaserVideo.currentTime = 0;
+          } catch (_) {
+            // Some browsers reject seeking before metadata is ready.
+          }
+          teaserVideo.load();
+        };
+
+        if (teaserVideo) {
+          window.addEventListener('blur', resetTeaser);
+          window.addEventListener('pagehide', resetTeaser);
+          document.addEventListener('visibilitychange', () => {
+            if (document.hidden) resetTeaser();
+          });
+        }
+
+        const stack = document.querySelector('[data-story-stack]');
+        if (!stack) return;
+
+        const cards = [...stack.querySelectorAll('.story-card')];
+        const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+        const openCard = (targetCard) => {
+          if (!(targetCard instanceof HTMLElement)) return;
+          if (targetCard.id !== 'reel') resetTeaser();
+
+          cards.forEach((card) => {
+            const open = card === targetCard;
+            card.classList.toggle('is-open', open);
+            const trigger = card.querySelector('.story-trigger');
+            if (trigger) trigger.setAttribute('aria-expanded', String(open));
+          });
+
+          window.setTimeout(() => {
+            targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 500);
+        };
+
+        let hoverTimer;
+        const cancelHoverOpen = () => {
+          if (hoverTimer) {
+            window.clearTimeout(hoverTimer);
+            hoverTimer = undefined;
+          }
+        };
+
+        cards.forEach((card) => {
+          const trigger = card.querySelector('.story-trigger');
+          if (!trigger) return;
+
+          trigger.addEventListener('click', () => {
+            cancelHoverOpen();
+            openCard(card);
+          });
+
+          trigger.addEventListener('focus', () => {
+            cancelHoverOpen();
+            openCard(card);
+          });
+
+          trigger.addEventListener('mouseenter', () => {
+            if (!finePointer.matches || card.classList.contains('is-open')) return;
+            cancelHoverOpen();
+            hoverTimer = window.setTimeout(() => openCard(card), 650);
+          });
+
+          trigger.addEventListener('mouseleave', cancelHoverOpen);
+        });
+      });
+    </script>
+  </body>
+</html>

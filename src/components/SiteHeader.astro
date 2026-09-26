@@ -1,0 +1,24 @@
+---
+interface Props {
+  solid?: boolean;
+  currentPage?: 'support' | 'privacy';
+}
+
+const { solid = false, currentPage } = Astro.props;
+---
+<header class:list={["site-header", solid && "solid"]} data-header>
+  <div class="shell nav-wrap">
+    <a class="brand" href="/" aria-label="Wcricket home">Wcricket</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      <span class="sr-only">Open menu</span>
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation" data-nav>
+      <a href="/#experience">About</a>
+      <a href="/#reel">Highlights</a>
+      <a href="/#character">On This Day</a>
+      <a href="/support.html" aria-current={currentPage === 'support' ? 'page' : undefined}>Support</a>
+      <a class="button button-small button-dark" href="/#download">Coming soon on the App Store</a>
+    </nav>
+  </div>
+</header>
