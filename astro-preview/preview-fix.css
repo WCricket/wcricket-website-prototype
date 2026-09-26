@@ -1,0 +1,4 @@
+.lozenge-medal{
+  -webkit-mask:url('../assets/images/classic-rosette.svg') center/contain no-repeat;
+  mask:url('../assets/images/classic-rosette.svg') center/contain no-repeat;
+}
