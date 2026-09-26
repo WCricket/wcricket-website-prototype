@@ -1,0 +1,22 @@
+/* Clean-preview refinements: consistent screenshot framing and clearer accordion state. */
+.clean-screen{
+  aspect-ratio:941/1938;
+  overflow:hidden !important;
+  max-height:none !important;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  background:#fff;
+}
+.clean-screen::before{display:none !important}
+.clean-screen img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center bottom !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+.story-card.is-open .story-hint{color:#314a3f}
+@media(max-width:520px){
+  .clean-screen{border-radius:24px}
+}
